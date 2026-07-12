@@ -1,0 +1,87 @@
+
+
+services:
+  # --- FastAPI Application ---
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: openbrain-api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://openbrain:openbrain_secret@postgres:5432/openbrain_db
+      - REDIS_URL=redis://redis:6379/0
+      - DEBUG=true
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - openbrain-network
+
+  # --- PostgreSQL 16 ---
+  postgres:
+    image: postgres:16-alpine
+    container_name: openbrain-postgres
+    environment:
+      POSTGRES_USER: openbrain
+      POSTGRES_PASSWORD: openbrain_secret
+      POSTGRES_DB: openbrain_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U openbrain -d openbrain_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - openbrain-network
+
+  # --- Redis 7 ---
+  redis:
+    image: redis:7-alpine
+    container_name: openbrain-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - openbrain-network
+
+  # --- Nginx Reverse Proxy ---
+  nginx:
+    image: nginx:alpine
+    container_name: openbrain-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - openbrain-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  openbrain-network:
+    driver: bridge

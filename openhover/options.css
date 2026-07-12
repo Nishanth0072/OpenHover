@@ -1,0 +1,411 @@
+/* ============================================
+   OpenHover — Popup Settings Styles
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f0f14;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.hm-popup {
+  width: 340px;
+  background: #0f0f14;
+  color: #e4e4e7;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* -- Header ------------------------------------------- */
+.hm-popup-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.hm-popup-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  color: white;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.hm-popup-title-group {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex: 1;
+}
+
+.hm-popup-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #e4e4e7, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hm-popup-version {
+  font-size: 10px;
+  color: #71717a;
+  font-weight: 500;
+}
+
+.hm-saved-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #34d399;
+  padding: 3px 8px;
+  background: rgba(52, 211, 153, 0.1);
+  border-radius: 20px;
+  animation: hm-fade-in 0.2s ease;
+}
+
+@keyframes hm-fade-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* -- Sections ----------------------------------------- */
+.hm-popup-section {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hm-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #71717a;
+  margin-bottom: 10px;
+}
+
+/* -- Toggle ------------------------------------------- */
+.hm-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hm-toggle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hm-toggle-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e4e4e7;
+}
+
+.hm-toggle-desc {
+  font-size: 11px;
+  color: #71717a;
+}
+
+.hm-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.hm-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.hm-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hm-slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hm-switch input:checked + .hm-slider {
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.3);
+}
+
+.hm-switch input:checked + .hm-slider::before {
+  transform: translateX(20px);
+}
+
+/* -- Radio Group -------------------------------------- */
+.hm-radio-group {
+  display: flex;
+  gap: 8px;
+}
+
+.hm-radio-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+}
+
+.hm-radio-option:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.hm-radio-option.active {
+  background: rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.hm-radio-option input {
+  display: none;
+}
+
+.hm-radio-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.hm-radio-option.active .hm-radio-dot {
+  border-color: #8b5cf6;
+}
+
+.hm-radio-option.active .hm-radio-dot::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8b5cf6;
+}
+
+.hm-radio-text {
+  white-space: nowrap;
+}
+
+/* -- Range Slider ------------------------------------- */
+.hm-slider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hm-slider-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #8b5cf6;
+  font-variant-numeric: tabular-nums;
+}
+
+.hm-range {
+  width: 100%;
+  height: 6px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  outline: none;
+  margin: 8px 0 4px;
+}
+
+.hm-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(139, 92, 246, 0.4);
+  transition: transform 0.15s;
+}
+
+.hm-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.hm-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #52525b;
+}
+
+/* -- Segmented Control -------------------------------- */
+.hm-segmented {
+  display: flex;
+  gap: 6px;
+}
+
+.hm-seg-btn {
+  flex: 1;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: #a1a1aa;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hm-seg-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.hm-seg-btn.active {
+  background: rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.4);
+  color: #e4e4e7;
+  font-weight: 600;
+}
+
+/* -- Site Exclusion ----------------------------------- */
+.hm-add-site {
+  display: flex;
+  gap: 8px;
+}
+
+.hm-site-input {
+  flex: 1;
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #e4e4e7;
+  font-family: inherit;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.hm-site-input:focus {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.15);
+}
+
+.hm-site-input::placeholder {
+  color: #52525b;
+}
+
+.hm-add-btn {
+  padding: 7px 14px;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hm-add-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+}
+
+.hm-add-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.hm-site-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.hm-site-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+}
+
+.hm-site-name {
+  font-size: 12px;
+  color: #a1a1aa;
+}
+
+.hm-site-remove {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: #71717a;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.hm-site-remove:hover {
+  background: rgba(248, 113, 113, 0.15);
+  color: #f87171;
+}
+
+/* -- Footer ------------------------------------------- */
+.hm-popup-footer {
+  padding: 12px 18px;
+  text-align: center;
+}
+
+.hm-footer-text {
+  font-size: 10px;
+  color: #3f3f46;
+}

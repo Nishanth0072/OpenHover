@@ -1,0 +1,154 @@
+.hm-auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.hm-auth-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.hm-auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.hm-auth-logo {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.hm-auth-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #c9d1d9;
+}
+
+.hm-auth-subtitle {
+  font-size: 14px;
+  color: #8b949e;
+  margin: 0;
+}
+
+.hm-auth-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background-color: rgba(248, 81, 73, 0.1);
+  border: 1px solid rgba(248, 81, 73, 0.4);
+  border-radius: 6px;
+  color: #ff7b72;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.hm-auth-error-icon {
+  font-weight: bold;
+}
+
+.hm-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hm-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hm-input-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8b949e;
+}
+
+.hm-input-group input {
+  padding: 10px 12px;
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #c9d1d9;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.hm-input-group input:focus {
+  border-color: #7f56d9;
+  box-shadow: 0 0 0 3px rgba(127, 86, 217, 0.3);
+}
+
+.hm-input-group input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hm-auth-btn {
+  margin-top: 8px;
+  padding: 10px;
+  background-color: #7f56d9;
+  color: #ffffff;
+  border: 1px solid rgba(240, 246, 252, 0.1);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.hm-auth-btn:hover:not(:disabled) {
+  background-color: #6941c6;
+}
+
+.hm-auth-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hm-auth-footer {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.hm-auth-switch-text {
+  color: #8b949e;
+  margin-right: 6px;
+}
+
+.hm-auth-switch-btn {
+  background: none;
+  border: none;
+  color: #9e77ed;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hm-auth-switch-btn:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.hm-auth-switch-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
